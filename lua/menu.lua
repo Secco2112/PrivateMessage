@@ -16,17 +16,24 @@ function ChatGui:show()
 end
 ]]
 
-function sendMessage(id)
+function send_Message(id)
 	managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
 end
 
-if Net:IsMultiplayer() and Net:GetNumberOfPeers() > 0 and isPlaying() then
-	local opts = {}
-	for id, ply in pairs( Net:GetPeers() ) do
-		opts[#opts+1] = { text = Net:GetNameFromPeerID(id), data = peer:id(), callback = sendMessage }
-	end
-	menuPrivate = QuickMenu:new("PRIVATE MESSAGE TO...", "Por Secco2112 \nVersão 1.0", opts)
-	menuPrivate:show()
+if Net:IsMultiplayer() and isPlaying() then
+	if Net:GetNumberOfPeers() > 0 then
+		local peer = managers.network._session:peer(id)
+		local menu_options = {}
+		for _, peer in pairs(managers.network:session():peers()) do
+			menu_options[#menu_options+1] ={text = peer:name(), data = peer:id(), callback = send_Message}
+		end
+		menu_options[#menu_options+1] = {text = "", is_cancel_button = true}
+		menu_options[#menu_options+1] = {text = "Fechar", is_cancel_button = true}
+		local privateMenu = QuickMenu:new("PrivateMessage", "PrivateMessage to...", menu_options)
+		privateMenu:Show()
+	else
+		managers.chat:_receive_message(1, "PrivateMessage", "Você está sozinho na sala", Color.red)
+	end	
 end
 
 if not managers.hud then
