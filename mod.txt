@@ -1,6 +1,6 @@
 {
 	"name" : "PrivateMessage",
-	"description" : "Mensagens privadas"
+	"description" : "Mod that allow to send private messages in game"
 	"author" : "Secco2112",
         "version" : "1.0",
 	"contact" : "gustavomarini9@gmail.com",
