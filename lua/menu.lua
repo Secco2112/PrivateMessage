@@ -10,6 +10,9 @@ function send_Message(id)
 	managers.chat:_receive_message(1, "PrivateMessage", "Player id = " .. peer:id(), Color.green)
 	--ChatGui:input_focus()
 	managers.hud:set_chat_focus(true)
+	if self._key_pressed == Idstring("return") then
+		
+	end
 end
 
 if Net:IsMultiplayer() and isPlaying() then
