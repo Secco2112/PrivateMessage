@@ -8,7 +8,8 @@ end
 function send_Message(id)
 	managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
 	managers.chat:_receive_message(1, "PrivateMessage", "Player id = " .. peer:id(), Color.green)
-	ChatGui:input_focus()
+	--ChatGui:input_focus()
+	managers.hud:set_chat_focus(true)
 end
 
 if Net:IsMultiplayer() and isPlaying() then
