@@ -5,19 +5,10 @@ function isPlaying()
 	return BaseNetworkHandler._gamestate_filter.any_ingame_playing[ game_state_machine:last_queued_state_name() ]
 end
 
---[[
-function ChatGui:enabled()
-	return self._enabled
-end
-
-function ChatGui:show()
-	self._panel:show()
-	self:set_enabled(true)
-end
-]]
-
 function send_Message(id)
 	managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
+	managers.chat:_receive_message(1, "PrivateMessage", "Player id = " .. peer:id(), Color.green)
+	ChatGui:input_focus()
 end
 
 if Net:IsMultiplayer() and isPlaying() then
