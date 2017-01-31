@@ -6,13 +6,14 @@ function isPlaying()
 end
 
 function send_Message(id)
-	managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
-	managers.chat:_receive_message(1, "PrivateMessage", "Player id = " .. peer:id(), Color.green)
-	--ChatGui:input_focus()
+	--managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
+	--managers.chat:_receive_message(1, "PrivateMessage", "Player id = " .. peer:id(), Color.green)
 	managers.hud:set_chat_focus(true)
-	if self._key_pressed == Idstring("return") then
-		
-	end
+	--if self._key_pressed == Idstring("enter") then
+		--local text = self._input_panel:child("input_text")
+		--local message = text:text()
+		--managers.chat:_receive_message(1, "PrivateMessage", "PrivateMessage sended to " .. Net:GetNameFromPeerID(id), Color.green)
+	--end
 end
 
 if Net:IsMultiplayer() and isPlaying() then
@@ -24,10 +25,10 @@ if Net:IsMultiplayer() and isPlaying() then
 		end
 		menu_options[#menu_options+1] = {text = "", is_cancel_button = true}
 		menu_options[#menu_options+1] = {text = "Fechar", is_cancel_button = true}
-		local privateMenu = QuickMenu:new("PrivateMessage", "PrivateMessage to...", menu_options)
+		local privateMenu = QuickMenu:new("Private Message Menu", "Send a Private Message to...", menu_options)
 		privateMenu:Show()
 	else
-		managers.chat:_receive_message(1, "PrivateMessage", "Você está sozinho na sala", Color.red)
+		managers.chat:_receive_message(1, "Private Message Menu", "Você está sozinho na sala", Color.red)
 	end	
 end
 
