@@ -1,3 +1,5 @@
+LuaModManager = LuaModManager or {}
+
 local Net = _G.LuaNetworking
 
 function isPlaying()
