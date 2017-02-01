@@ -20,7 +20,7 @@ function send_Message(id)
 		--local text = self._input_panel:child("input_text")
 		--local message = text:text()
 		--managers.chat:_receive_message(1, "PrivateMessage", "Private message sended to " .. Net:GetNameFromPeerID(id), Color.green)
-		Net:SendToPeer(id, "PrivateMessage from " .. localPlayerName, "test")
+		Net:SendToPeer(id, "PrivateMessage", "test")
 	end
 end
 
