@@ -7,16 +7,20 @@ function isPlaying()
 	return BaseNetworkHandler._gamestate_filter.any_ingame_playing[ game_state_machine:last_queued_state_name() ]
 end
 
+local key = "enter"
 local key = LuaModManager:GetPlayerKeybind("enter") or "enter"
 local _input = Input:keyboard()
 function send_Message(id)
 	--managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
 	--managers.chat:_receive_message(1, "PrivateMessage", "Player id = " .. peer:id(), Color.green)
 	managers.hud:set_chat_focus(true)
+	local local_ID = Net:LocalPeerID()
+	local localPlayerName = Net:GetNameFromPeerID(local_ID)
 	if key then
 		--local text = self._input_panel:child("input_text")
 		--local message = text:text()
 		--managers.chat:_receive_message(1, "PrivateMessage", "Private message sended to " .. Net:GetNameFromPeerID(id), Color.green)
+		Net:SendToPeer(id, "PrivateMessage from " .. localPlayerName, message)
 	end
 end
 
