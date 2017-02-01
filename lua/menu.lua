@@ -8,7 +8,7 @@ function isPlaying()
 end
 
 local key = "enter"
-local key = LuaModManager:GetPlayerKeybind("enter") or "enter"
+local key_pressed = LuaModManager:GetPlayerKeybind(key) or "enter"
 local _input = Input:keyboard()
 function send_Message(id)
 	--managers.chat:_receive_message(1, "PrivateMessage", "Player name = " .. Net:GetNameFromPeerID(id), Color.green)
