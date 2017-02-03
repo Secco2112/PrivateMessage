@@ -16,12 +16,12 @@ function send_Message(id)
 	managers.hud:set_chat_focus(true)
 	local local_ID = Net:LocalPeerID()
 	local localPlayerName = Net:GetNameFromPeerID(local_ID)
-	if key_pressed then
+	--if key_pressed then
 		--local text = self._input_panel:child("input_text")
 		--local message = text:text()
 		--managers.chat:_receive_message(1, "PrivateMessage", "Private message sended to " .. Net:GetNameFromPeerID(id), Color.green)
 		Net:SendToPeer(id, "PrivateMessage", "test")
-	end
+	--end
 end
 
 if Net:IsMultiplayer() and isPlaying() then
